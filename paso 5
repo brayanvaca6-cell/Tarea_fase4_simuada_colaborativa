@@ -1,0 +1,96 @@
+#creamos una nueva clase llamada reserva, que basicamente es el vicnulo entre los clientes y el servicio
+#sin la esta clase solo se tendrian clientes por un lado y servicion por otro sin ninguna conexion.
+
+class reserva:
+#aca se crea el constructor ya que para hacer una reserva se necesita saber quien fue y que servicio esta reservando y cuando.
+ def init (self,cliente,servicio,fecha_reserva):
+ 
+#aca se verifica que real mente si sea un cliente o sino el sistema lanza un error
+  if not isinstance(cliente, cliente):
+   raise datoinvalidoerror("El cliente no es valido")
+#aca se verifica que real mente si es un servicio o sino el sistema lanza un error  
+  if not isinstance(servicio, servicio):
+   raise datoinvalidoerror("El servicio no es valido")
+#aca se verifica que real mente la fecha sea del presente, o sino el sistema lanza un error  
+  if fecha_reserva < datetime.now():
+   raise datoinvalidoerror("no puede reservarse en una fecha que ya paso")
+#aca si todo esta bien, guarda la informacion suministrada
+  self.cliente = cliente
+  self.servicio = servicio
+  self.fecha_reserva = fecha_reserva
+
+#aca mostramos un detallado de la informacion suministrada en la pantalla para que el cliente la vea y verifique que todo este bien
+ def obtener_informacion(self):
+#aca se llama al metodo del cliente para obtener su nombre
+  return (f"====RESERVA====\n"
+  f"cliente: {self.cliente.obtener_nombre()}\n"
+#aca cambiamos el formato de la fecha para que se pueda ver mejor, dia,mes,año,hora y minutos
+  f"fecha: {self.fecha_reserva.strftime('%d/%m/%Y %H:%M:%S')}\n"
+#aca usamos el metodo calcular_costos de cada servicio para saber cuanto cuesta
+  f"servicio: {self.servicio.mostrar_informacion()}\n"
+  f"costo total: {self.servicio.calcular_costos():,.2f}\n"
+  f"===============")
+
+#creamos la clase llamada sistema de gestion, que nos permite organizar toda la infomacion, los clientes, servicio y reservas
+#tambien nos la muestra cada que la necesitamos
+
+class sistemadegestion:
+#aca creamos 3 listas vacias, una para cada cosa, ademas aca se guarda la informacion de clientes, servicios y reservas
+ def init (self):
+  self.clientes = []
+  self.servicios = []
+  self.reservas = []
+
+#agregamos un  servicio a la lista y se envia confirmacion
+ def agregar_cliente(self,cliente):
+  self.clientes.append(cliente)
+  print(f"Cliente {cliente.obtener_nombre()} agregado exitosamente.")
+
+#agregamos una reserva a la lista y se envia confirmacion
+ def agregar_servicio(self,servicio):
+  self.servicios.append(servicio)
+  print(f"Servicio {servicio._nombre} agregado exitosamente.")
+
+#agregamos una reserva a la lista y se envia su confirmacion
+ def realizar_reserva(self, reserva):
+  self.reservas.append(reserva)
+  print(f"Reserva realizada exitosamente")
+
+#mostramos un titulo agradable y recorre la lista cliente y mostramos cada cliente
+ def lista_clientes(self):
+  print("===LISTA DE CLIENTES===")
+  for c in self.clientes:
+   print (f"- {c}")
+
+#mostramos un titulo agradable y recorre la lista, usamos su metodo mostrar_informacion
+ def lista_servicios(self):
+  print("===LISTA DE SERVICIOS DISPONIBLES===")
+  for s in self.servicios:
+   print (f"- {s.mostrar_informacion()}")
+
+#aca se revisa la lista, si esta vacia muestra un mensaje 
+ def lista_reservas(self):
+  print("===LISTA DE RESERVAS===")
+  if not self.reservas:
+   print("No hay reservas registradas.")
+
+#si hay reservas se recorre la lista y muestra cada una de ellas con su formato completo
+  else: 
+    for r in self.reservas:
+      print(r.obtener_informacion())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
