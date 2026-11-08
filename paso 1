@@ -1,8 +1,7 @@
-
-
-
-
-
+#aca en esta parte estamos importando una clase que trae ya python instalada que se llama basicamente clases base abstracta
+from abc import ABC, abstractmethod
+#aca en esta parte estamos trayendo una herramienta de python que sirve para obtener fechas y horas.
+from datetime import datetime
 
 #creamos las excepciones personalizadas que pide el sistema de gestion
 #esto es para un error general del sistema
