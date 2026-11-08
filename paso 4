@@ -1,0 +1,61 @@
+#creamos las clases hijas con sus propios atributos
+#creamos la clase hija llamada reserva sala que heredara todo lo que tiene la clase servicio
+class reservadesala(servicio):
+#creamos el constructor que se necesita para crear una reserva de sala, aparte tambien se necesita saber cuantas personas caben...
+ def init (self,nombre,descripcion,precio_base,capacidad_personas):
+#aca lee estamos diciendo que valla a la clase padre y guarde los 3 datos, es el paso de herencia
+  super().init(nombre,descripcion,precio_base)
+#aca guardamos que es de la capacidad de las salas, cuantas personas pueden entrar.
+  self.capacidad_personas = capacidad_personas
+#aca calculamos el costo, el presio es fijo cada servicio de calcula su costo diferente
+ def calcular_costos(self):
+  return self.precio_base
+
+  
+#ahora creamos la 2da clase hija, que se llama alquiler de equipos, que tambien heredara de la clase servicio
+
+class alquilerdeequipo(servicio):
+# aca creamos el constructor de este servicio  que nos dice cuantos dias se va a alquilar
+ def init (self,nombre,descripcion,precio_base,dias_alquiler):
+  super().init(nombre,descripcion,precio_base)
+# aca guardamos la cantidad de dias que se va a alquilar
+  self.dias_alquiler = dias_alquiler
+
+# aca calculamos el costo, multiplicamos el precio base por los dias que se va a usar
+ def calcular_costos(self):
+  return self.precio_base * self.dias_alquiler
+
+
+#ahora creamos la 3ra clase hija, que se va a llamar asesoria especializada, que tambien heredara de la clase servico
+
+class asesoriaespecializada(servicio):
+#aca creamos el constructor de este servico que nos dice cuantas horas durara el servicio
+ def init (self,nombre,descripcion,precio_base,horas_asesoria):
+  super().init(nombre,descripcion,precio_base)
+#aca guardamos las horas que va a tener la asesoria
+  self.horas_asesoria = horas_asesoria
+  
+#aca calculamos el costo, y ponemos una condicion, si la asesoria pasa mas de 2 horas aplicamos el 10% de descuento, si no, no se aplica
+ def calcular_costos(self):
+  descuento = 0.10 if self.horas_asesoria > 2 else 0
+#aca seria el calculo del precio final menos el descuento si llega a aplicar
+  return self.precio_base * self.horas_asesoria * (1 - descuento)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
