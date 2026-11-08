@@ -1,23 +1,32 @@
-
 #creamos la clase abstracta de servicio
-# (ABC) significa clase abstracta 
+#(ABC) significa clase abstracta 
+
 class servicio(ABC):
+
 #creamos el constructor que se ejecuta automaticamente cada ves que creamos una nueva clase
-  def_init_(self,nombre,descripcion,precio_base)
-#esto guarda el nombre del servicio y los demas guarda la informacion de descripcion y precio_base
-   self._nombre = nombre
-   self.descripcion = descripcion
-   self.precio_base = precio_base
-# que hace @abstractmethod? es una regla que dice que cualquier clase que herede d servicio debe crear su propio metodo de calcular_costo()
+
+ def init (self,nombre,descripcion,precio_base):
+
+#aca se guarda la informacion de cada ciente de forma segura
+
+  self._nombre = nombre
+  self.descripcion = descripcion
+  self.precio_base = precio_base
+
+#que hace @abstractmethod? es una regla que dice que cualquier clase que herede d servicio debe crear su propio metodo de calcular_costo()
+
   @abstractmethod
+
 #aqui se declara la funcion calcular_costos() pero no dice como ira a funcionar
   def calcular_costos(self):
     pass
 #aca creamos una funcion para mostrar los datos del servico que contratamos
   def mostrar_informacion(self):
       return f"{self._nombre}: {self._descripcion} | costos {self.calcular_costo():,.2f}"
+ 
 
 
 
-      #codigo escrito sin verificacion aun en python :(
+
+      #codigo escrito verificado en python :)
       
