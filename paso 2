@@ -3,9 +3,9 @@
 # creamos la clase cliente con sus atributos
 # creamos la opcion de que si no  escribe algun nombre salga un aviso que diga identificacion y nomnre son obligatorios
 class cliente:
- def_init_ (self,identificacion,nombre,correo,telefono):
+ def _init_ (self,identificacion,nombre,correo,telefono):
   if not identificacion or not nombre:
-   raise datoinvalidoerror("identificacion y nombre son obligatorios)
+   raise DatoInvalidoError("identificacion y nombre son obligatorios")
 #aca estamos almacenando los datos de cliente dentro de la clase cliente
 #el guion bajo, significa que los datos son privados y no se pueden modificar desde afuera, solo la propia clase cliente lo puede cambiar
   self._identificacion = identificacion
@@ -17,17 +17,17 @@ class cliente:
 def obtener_nombre(self):
   return self._nombre
 
- def obtener_identificacion(self):
+def obtener_identificacion(self):
   return self._identificacion
 
- def obtener_correo(self):
+def obtener_correo(self):
   return self._correo
 
- def obtener_telefono(self):
+def obtener_telefono(self):
   return self._telefono
 
 # en esta parte estamos diciendo que nos imprima o nos muestre el nombre  y el id de la persona que registramos
- def _str_(self):
+def _str_(self):
   return f"cliente:{self._nombre} | id:{self._identificacion}"
 
 

@@ -5,16 +5,16 @@ from datetime import datetime
 
 #creamos las excepciones personalizadas que pide el sistema de gestion
 #esto es para un error general del sistema
-class errorsistema(exception):
+class ErrorSistema(Exception):
  pass
  #esto es para cuando un dato no cumple con las reglas
-class datoinvalidoerror(errorsistema):
+class DatoInvalidoError(ErrorSistema):
  pass
  #esto es para cuando hay algun problema con la reserva
-class reservainvalidaerror(errorsistema):
+class ReservaInvalidaError(ErrorSistema):
  pass
  #esto es para cuando el servicio no esta disponible
-class servicionodisponibleerror(errorsistema):
+class ServicioNoDisponibleError(ErrorSistema):
  pass
   
  
